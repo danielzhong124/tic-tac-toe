@@ -1,4 +1,6 @@
 class Player
+  attr_reader :marker
+
   def initialize(game, marker)
     @game = game
     @marker = marker
@@ -25,9 +27,5 @@ class Player
     end
 
     return [row_num, col_num]
-  end
-
-  def marker
-    return @marker
   end
 end
