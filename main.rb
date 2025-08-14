@@ -2,4 +2,4 @@ require_relative 'lib/game'
 require_relative 'lib/player'
 
 game = Game.new
-game.print_board
+game.play
