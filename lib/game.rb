@@ -3,7 +3,7 @@ require 'colorize'
 class Game
   SIZE = 3
 
-  def initialize
+  def initialize()
     @board = Array.new(SIZE) {Array.new(SIZE, ' ')}
     @current_player = 0
     @players = [Player.new(self, 'X'.colorize(:red)), Player.new(self, 'O'.colorize(:blue))]
