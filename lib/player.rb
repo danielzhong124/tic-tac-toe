@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Player
   attr_reader :marker
 
@@ -10,22 +12,22 @@ class Player
     @game.print_board
     puts "#{marker}'s turn."
 
-    print "Select row (0-2): "
+    print 'Select row (0-2): '
     row_num = gets.to_i
 
-    print "Select column (0-2): "
+    print 'Select column (0-2): '
     col_num = gets.to_i
 
-    until @game.space_free?(row_num, col_num) do
-      puts "Invalid move. Try again."
+    until @game.space_free?(row_num, col_num)
+      puts 'Invalid move. Try again.'
 
-      print "Select row (0-2): "
+      print 'Select row (0-2): '
       row_num = gets.to_i
 
-      print "Select column (0-2): "
-      col_num = gets.to_i      
+      print 'Select column (0-2): '
+      col_num = gets.to_i
     end
 
-    return [row_num, col_num]
+    [row_num, col_num]
   end
 end

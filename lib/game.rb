@@ -1,10 +1,12 @@
+# frozen_string_literal: true
+
 require 'colorize'
 
 class Game
   SIZE = 3
 
-  def initialize()
-    @board = Array.new(SIZE) {Array.new(SIZE, ' ')}
+  def initialize
+    @board = Array.new(SIZE) { Array.new(SIZE, ' ') }
     @current_player = 0
     @players = [Player.new(self, 'X'.colorize(:red)), Player.new(self, 'O'.colorize(:blue))]
   end
@@ -37,25 +39,25 @@ class Game
   def three_in_row?(row_num, col_num)
     marker = @players[@current_player].marker
 
-    #check horizontal
+    # check horizontal
     row = @board[row_num]
-    return true if row.all? {|space| space == marker}
+    return true if row.all? { |space| space == marker }
 
-    #check vertical
-    col = (0...SIZE).map{|i| @board[i][col_num]}
-    return true if col.all? {|space| space == marker}
+    # check vertical
+    col = (0...SIZE).map { |i| @board[i][col_num] }
+    return true if col.all? { |space| space == marker }
 
-    #check diagonals
+    # check diagonals
     if row_num == col_num
-      diag = (0...SIZE).map{|i| @board[i][i]}
-      return true if diag.all? {|space| space == marker}
+      diag = (0...SIZE).map { |i| @board[i][i] }
+      return true if diag.all? { |space| space == marker }
 
-    elsif row_num == SIZE-1-col_num
-      diag = (0...SIZE).map{|i| @board[i][SIZE-1-i]}
-      return true if diag.all? {|space| space == marker}
+    elsif row_num == SIZE - 1 - col_num
+      diag = (0...SIZE).map { |i| @board[i][SIZE - 1 - i] }
+      return true if diag.all? { |space| space == marker }
     end
 
-    return false
+    false
   end
 
   def mark_space!(row_num, col_num)
@@ -63,11 +65,11 @@ class Game
   end
 
   def space_free?(row_num, col_num)
-    return row_num.between?(0, SIZE-1) && col_num.between?(0, SIZE-1) && @board[row_num][col_num] == ' '
+    row_num.between?(0, SIZE - 1) && col_num.between?(0, SIZE - 1) && @board[row_num][col_num] == ' '
   end
 
   def print_board
-    row_strs = @board.map {|row| row.join(" | ")}
+    row_strs = @board.map { |row| row.join(' | ') }
     puts row_strs.join("\n---------\n")
   end
 end
